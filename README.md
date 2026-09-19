@@ -42,7 +42,10 @@ expensive thing in empirical work, and the only defence is showing your hand.
 <table>
 <tr><td width="55%">
 
-### Silent failures in visibility analysis
+<h3>
+  <img src="assets/icons/viewshed-failure.svg" width="26" height="26" align="absmiddle" alt="">
+  &nbsp;Silent failures in visibility analysis
+</h3>
 **Which GIS bugs produce results that look perfectly plausible?**
 
 A line-of-sight engine you can inject defects into, a benchmark audited by mutation
@@ -53,7 +56,10 @@ only — no black boxes.
 
 </td><td width="45%">
 
-### Do models disagree like humans do?
+<h3>
+  <img src="assets/icons/annotation-agreement.svg" width="26" height="26" align="absmiddle" alt="">
+  &nbsp;Do models disagree like humans do?
+</h3>
 **Not whether an LLM annotates well — whether its disagreement is distinguishable from
 a second human's.**
 
@@ -65,7 +71,10 @@ models × three runs, per-variable Δκ with paired bootstrap.
 </td></tr>
 <tr><td>
 
-### Auditing a national researcher registry
+<h3>
+  <img src="assets/icons/registry-audit.svg" width="26" height="26" align="absmiddle" alt="">
+  &nbsp;Auditing a national researcher registry
+</h3>
 **Peru certifies and ranks its researchers. Does the ranking survive contact with
 OpenAlex?**
 
@@ -78,7 +87,10 @@ the certified and uncertified AI workforce.
 
 </td><td>
 
-### Matching Hispanic compound surnames
+<h3>
+  <img src="assets/icons/name-linkage.svg" width="26" height="26" align="absmiddle" alt="">
+  &nbsp;Matching Hispanic compound surnames
+</h3>
 **Every record-linkage tool built for "First Last" quietly fails on "Mamani-Calisaya".**
 
 A three-tier protocol and a 65,528-case synthetic benchmark to prove it, and to measure
@@ -94,7 +106,10 @@ what it costs.
 ## Everything else
 
 <details open>
-<summary><b>Science studies &amp; research evaluation</b></summary>
+<summary>
+  <img src="assets/icons/section-science-studies.svg" width="20" height="20" align="absmiddle" alt="">
+  &nbsp;<b>Science studies &amp; research evaluation</b>
+</summary>
 <br>
 
 | Repository | Hook |
@@ -108,7 +123,10 @@ what it costs.
 </details>
 
 <details open>
-<summary><b>Computational archaeology</b></summary>
+<summary>
+  <img src="assets/icons/section-archaeology.svg" width="20" height="20" align="absmiddle" alt="">
+  &nbsp;<b>Computational archaeology</b>
+</summary>
 <br>
 
 | Repository | Hook |
@@ -120,7 +138,10 @@ what it costs.
 </details>
 
 <details open>
-<summary><b>Public policy &amp; political economy</b></summary>
+<summary>
+  <img src="assets/icons/section-policy.svg" width="20" height="20" align="absmiddle" alt="">
+  &nbsp;<b>Public policy &amp; political economy</b>
+</summary>
 <br>
 
 | Repository | Hook |
@@ -131,7 +152,10 @@ what it costs.
 </details>
 
 <details open>
-<summary><b>Applied machine learning</b></summary>
+<summary>
+  <img src="assets/icons/section-machine-learning.svg" width="20" height="20" align="absmiddle" alt="">
+  &nbsp;<b>Applied machine learning</b>
+</summary>
 <br>
 
 | Repository | Hook |
@@ -141,7 +165,10 @@ what it costs.
 </details>
 
 <details>
-<summary><b>Teaching</b></summary>
+<summary>
+  <img src="assets/icons/section-teaching.svg" width="20" height="20" align="absmiddle" alt="">
+  &nbsp;<b>Teaching</b>
+</summary>
 <br>
 
 | Repository | Course |
