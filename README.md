@@ -42,7 +42,7 @@ expensive thing in empirical work, and the only defence is showing your hand.
 <table>
 <tr><td width="55%">
 
-### 🔍 Silent failures in visibility analysis
+### Silent failures in visibility analysis
 **Which GIS bugs produce results that look perfectly plausible?**
 
 A line-of-sight engine you can inject defects into, a benchmark audited by mutation
@@ -53,7 +53,7 @@ only — no black boxes.
 
 </td><td width="45%">
 
-### 🤖 Do models disagree like humans do?
+### Do models disagree like humans do?
 **Not whether an LLM annotates well — whether its disagreement is distinguishable from
 a second human's.**
 
@@ -65,7 +65,7 @@ models × three runs, per-variable Δκ with paired bootstrap.
 </td></tr>
 <tr><td>
 
-### 📊 Auditing a national researcher registry
+### Auditing a national researcher registry
 **Peru certifies and ranks its researchers. Does the ranking survive contact with
 OpenAlex?**
 
@@ -78,7 +78,7 @@ the certified and uncertified AI workforce.
 
 </td><td>
 
-### 🏷️ Matching Hispanic compound surnames
+### Matching Hispanic compound surnames
 **Every record-linkage tool built for "First Last" quietly fails on "Mamani-Calisaya".**
 
 A three-tier protocol and a 65,528-case synthetic benchmark to prove it, and to measure
