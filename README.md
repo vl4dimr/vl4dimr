@@ -46,7 +46,7 @@ expensive thing in empirical work, and the only defence is showing your hand.
   <img src="assets/icons/viewshed-failure.svg" width="26" height="26" align="absmiddle" alt="">
   &nbsp;Silent failures in visibility analysis
 </h3>
-**Which GIS bugs produce results that look perfectly plausible?**
+*Which GIS bugs produce results that look perfectly plausible?*
 
 A line-of-sight engine you can inject defects into, a benchmark audited by mutation
 analysis, and a synthetic landscape where ground truth is true by construction. NumPy
@@ -60,8 +60,8 @@ only — no black boxes.
   <img src="assets/icons/annotation-agreement.svg" width="26" height="26" align="absmiddle" alt="">
   &nbsp;Do models disagree like humans do?
 </h3>
-**Not whether an LLM annotates well — whether its disagreement is distinguishable from
-a second human's.**
+*Not whether an LLM annotates well — whether its disagreement is distinguishable from
+a second human's.*
 
 160 Spanish thesis abstracts, two independent human annotators, three open-weight
 models × three runs, per-variable Δκ with paired bootstrap.
