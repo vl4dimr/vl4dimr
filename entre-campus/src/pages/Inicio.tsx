@@ -1,5 +1,6 @@
 import { ConDatos, ListaAvisos, Pie, SelectorDireccion, Titulo } from "../components/piezas";
-import { EstadoServicio, LineaTiempo, ListaSalidas, ProximaSalida } from "../components/horario";
+import { EstadoServicio, LineaTiempo, ListaSalidas } from "../components/horario";
+import { EnCamino, MisViajes, ProximaSalida } from "../components/viaje";
 import { rutaActual, useApp } from "../estado";
 import { avisosActivos } from "../lib/horario";
 
@@ -17,6 +18,8 @@ export function Inicio() {
               <SelectorDireccion rutas={datos.ciclo.rutas} actual={ruta} />
               <EstadoServicio {...base} proximoCiclo={datos.proximoCiclo} />
               <ProximaSalida {...base} />
+              <EnCamino {...base} />
+              <MisViajes {...base} />
               <LineaTiempo {...base} />
               <ListaSalidas {...base} />
               <ListaAvisos avisos={avisosActivos(datos.ciclo, ahora)} />

@@ -143,7 +143,7 @@ main > h1 { font-size: 1.5rem; line-height: 1.2; }
 .estado.activo .punto { background: var(--ok); box-shadow: 0 0 0 4px color-mix(in srgb, var(--ok) 25%, transparent); }
 .estado span span { font-weight: 400; }
 
-.proxima { background: var(--acento); color: var(--sobre-acento); border-color: transparent; }
+.proxima { border-color: transparent; }
 .proxima h2 { font-size: 0.9rem; font-weight: 600; margin-bottom: 2px; }
 .proxima .hora { font-size: 2.6rem; font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; }
 .proxima .cuenta { font-size: 1.2rem; font-weight: 600; font-variant-numeric: tabular-nums; }
@@ -209,3 +209,74 @@ label.campo { display: grid; gap: 4px; font-weight: 600; }
 
 @media (min-width: 560px) { main { padding: 24px 20px calc(var(--nav-alto) + 40px); } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+
+/* Próxima salida: anillo, consejo y urgencia */
+:root { --ambar: #ffb703; --sobre-ambar: #3a2500; }
+.proxima { background: linear-gradient(140deg, #0b7d77, #07524e); color: #fff; overflow: hidden; }
+.proxima-cuerpo { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.anillo { position: relative; flex: none; width: 92px; height: 92px; display: grid; place-content: center; text-align: center; }
+.anillo svg { position: absolute; inset: 0; transform: rotate(-90deg); }
+.anillo circle { fill: none; stroke-width: 7; }
+.anillo .pista { stroke: rgb(255 255 255 / 0.22); }
+.anillo .avance { stroke: var(--ambar); stroke-linecap: round; transition: stroke-dashoffset 1s linear; }
+.anillo span { font-size: 1.7rem; font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; }
+.anillo small { font-size: 0.7rem; opacity: 0.9; }
+.proxima .llegada { border-top-color: rgb(255 255 255 / 0.3); }
+.proxima.urgente { background: linear-gradient(140deg, #ffc93c, #fb8500); color: var(--sobre-ambar); }
+.proxima.urgente .anillo .pista { stroke: rgb(58 37 0 / 0.2); }
+.proxima.urgente .anillo .avance { stroke: var(--sobre-ambar); }
+.proxima.urgente .llegada { border-top-color: rgb(58 37 0 / 0.3); }
+.proxima.urgente .anillo { animation: latido 1s ease-in-out infinite; }
+@keyframes latido { 50% { transform: scale(1.07); } }
+.consejo { margin-top: 10px; padding: 8px 12px; border-radius: 10px; background: rgb(0 0 0 / 0.22); }
+.proxima.urgente .consejo { background: rgb(255 255 255 / 0.4); }
+.proxima-pie { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: space-between; margin-top: 12px; }
+.paso { display: flex; align-items: center; gap: 4px; font-size: 0.85rem; }
+.paso span { padding: 0 6px; }
+.paso button, .compartir {
+  min-width: 44px; min-height: 44px; border-radius: 10px; cursor: pointer; font-weight: 700;
+  border: 1px solid currentColor; background: transparent; color: inherit;
+}
+.paso button { font-size: 1.2rem; }
+.paso button:disabled { opacity: 0.45; cursor: not-allowed; }
+.compartir { padding: 0 14px; }
+.proxima :focus-visible { outline-color: #fff; }
+.proxima.urgente :focus-visible { outline-color: var(--sobre-ambar); }
+
+/* Bus en camino */
+.trayecto { margin: 22px 0 6px; }
+.via { position: relative; height: 8px; border-radius: 4px; background: var(--superficie-2); margin: 0 16px; }
+.via .hecho { height: 100%; border-radius: 4px; background: var(--acento); transition: width 1s linear; }
+.via .bus { position: absolute; top: -20px; width: 32px; height: 32px; margin-left: -16px; color: var(--acento); transition: left 1s linear; animation: rebote 0.6s ease-in-out infinite alternate; }
+.via .bus .vidrio { fill: var(--superficie); }
+.via .bus .luz { fill: var(--ambar); }
+@keyframes rebote { to { transform: translateY(-2px); } }
+.extremos { display: flex; justify-content: space-between; margin-top: 8px; font-size: 0.8rem; font-weight: 600; color: var(--texto-suave); }
+
+/* Mis viajes */
+.viajes { position: relative; overflow: hidden; display: grid; gap: 12px; }
+.viajes-cabeza { display: flex; justify-content: space-between; align-items: baseline; }
+.viajes-cabeza h2 { margin: 0; font-size: 1.05rem; }
+.viajes-cabeza a { font-size: 0.875rem; font-weight: 600; padding: 10px 0; }
+.marcador { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.marcador.tres { grid-template-columns: repeat(3, 1fr); }
+.racha { display: grid; justify-items: center; gap: 0; padding: 10px 6px; border-radius: 12px; background: var(--superficie-2); text-align: center; font-size: 0.8rem; color: var(--texto-suave); }
+.racha strong { font-size: 1.8rem; line-height: 1.1; color: var(--texto); font-variant-numeric: tabular-nums; }
+.racha.viva { background: var(--alto-fondo); color: var(--alto); }
+.racha .llama { font-size: 1.2rem; }
+.abordar { width: 100%; min-height: 52px; font-size: 1rem; }
+.abordar:not(:disabled) { animation: brillo 2.4s ease-in-out infinite; }
+@keyframes brillo { 50% { box-shadow: 0 0 0 6px color-mix(in srgb, var(--acento) 25%, transparent); } }
+.fiesta { font-weight: 700; color: var(--ok); min-height: 1.5em; text-align: center; }
+.fiesta:empty { display: none; }
+.confeti { position: absolute; inset: 0; pointer-events: none; }
+.confeti i { position: absolute; top: -12px; width: 8px; height: 14px; border-radius: 2px; animation: caer 2.2s cubic-bezier(0.2, 0.6, 0.4, 1) forwards; }
+@keyframes caer { to { transform: translateY(340px) rotate(var(--giro)); opacity: 0; } }
+.medallas { display: grid; gap: 10px; }
+.medalla { display: grid; grid-template-columns: 44px 1fr; gap: 12px; align-items: center; }
+.medalla div { display: grid; gap: 2px; }
+.medalla .sello { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; font-size: 1.3rem; background: var(--superficie-2); color: var(--texto-suave); }
+.medalla.lograda .sello { background: var(--ambar); color: var(--sobre-ambar); }
+.medalla progress { width: 100%; height: 6px; accent-color: var(--acento); }
+main > * { animation: entrar 0.35s ease-out both; }
+@keyframes entrar { from { opacity: 0; transform: translateY(8px); } }

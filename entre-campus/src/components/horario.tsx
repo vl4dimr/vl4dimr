@@ -1,7 +1,7 @@
 import type { Ciclo, Franja, Ruta } from "../lib/esquema";
-import { estadoServicio, franjaEn, franjasDe, proximaSalida, salidasDeHoy, type SalidaDelDia } from "../lib/horario";
+import { estadoServicio, franjaEn, franjasDe, salidasDeHoy, type SalidaDelDia } from "../lib/horario";
 import { lineaEstado, textoEstado } from "../lib/textos";
-import { aMinutos, diaRelativo, formatoCuenta, formatoHora, partesCR, type FechaISO } from "../lib/tiempo";
+import { aMinutos, formatoHora, partesCR, type FechaISO } from "../lib/tiempo";
 
 interface Base {
   ciclo: Ciclo;
@@ -21,29 +21,6 @@ export function EstadoServicio({ ciclo, ruta, ahora, proximoCiclo }: Base & { pr
         {corte > 0 ? <span>{t.detalle}</span> : linea}
       </span>
     </p>
-  );
-}
-
-export function ProximaSalida({ ciclo, ruta, ahora }: Base) {
-  const s = proximaSalida(ciclo, ruta, ahora);
-  if (!s) return null;
-  const hoy = partesCR(ahora).fecha;
-  const faltan = (s.instante.getTime() - ahora.getTime()) / 1000;
-  const llegada = formatoHora(partesCR(s.llegada).minutos);
-  return (
-    <section class="tarjeta proxima" aria-labelledby="t-proxima">
-      <h2 id="t-proxima">Próxima salida desde {ruta.origen}</h2>
-      <p class="hora" data-testid="proxima-hora">
-        {formatoHora(s.minutos)}
-        {s.fecha !== hoy && <span class="chico"> · {diaRelativo(hoy, s.fecha)}</span>}
-      </p>
-      <p class="cuenta" role="timer" aria-live="off" data-testid="cuenta">
-        {faltan < 1 ? "Sale ahora" : `Sale en ${formatoCuenta(faltan)}`}
-      </p>
-      <p class="llegada">
-        Llegada estimada a {ruta.destino}: <strong>{llegada}</strong> (unos {ruta.duracionEstimadaMin} min de viaje)
-      </p>
-    </section>
   );
 }
 

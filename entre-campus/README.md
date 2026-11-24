@@ -1,3 +1,5 @@
+<p align="center"><img src="public/icons/icono.svg" width="112" alt="Logo de Entre Campus: un bus sonriente"></p>
+
 # Entre Campus
 
 PWA que informa sobre el bus interno de la Universidad Nacional (UNA, Costa Rica) entre el **Campus Omar Dengo** (Heredia) y el **Campus Benjamín Núñez** (Lagunilla): estado del servicio, próxima salida con cuenta regresiva, horarios, paradas y avisos.
@@ -5,14 +7,17 @@ PWA que informa sobre el bus interno de la Universidad Nacional (UNA, Costa Rica
 > **Proyecto independiente y no oficial.** No está afiliado a la UNA.
 > Los horarios y las paradas incluidos hoy son **datos de ejemplo** (`"ejemplo": true`) hasta que se carguen los oficiales.
 
-| Inicio | Tema oscuro | Horarios | Paradas |
+| Inicio | Tema oscuro | Mis viajes | Paradas |
 | --- | --- | --- | --- |
-| ![Inicio](docs/capturas/inicio.png) | ![Inicio en tema oscuro](docs/capturas/inicio-oscuro.png) | ![Horarios](docs/capturas/horarios.png) | ![Paradas](docs/capturas/paradas.png) |
+| ![Inicio](docs/capturas/inicio.png) | ![Inicio en tema oscuro](docs/capturas/inicio-oscuro.png) | ![Mis viajes](docs/capturas/viajes.png) | ![Paradas](docs/capturas/paradas.png) |
 
 ## Qué hace
 
 - Estado en vivo: «En servicio · franja Noche (hasta 8:00 p.m.)», «Fuera de servicio · próxima franja: Mediodía, 12:00 m.d.», «El servicio vuelve el lunes a las 6:00 a.m.».
 - Próxima salida con cuenta regresiva y hora estimada de llegada.
+- «¿Me da tiempo?»: indique cuánto tarda en llegar a la parada y la app le dice cuándo salir.
+- Bus en camino: posición estimada según el horario (no es GPS).
+- Mis viajes: registro personal con racha e insignias, guardado solo en el dispositivo.
 - Línea de tiempo de las franjas y lista de salidas del día.
 - Feriados, fin de ciclo y errores de carga con mensajes claros.
 - Funciona sin conexión e indica de qué fecha son los datos.
@@ -94,6 +99,7 @@ src/lib/esquema.ts   esquema Zod de los datos
 src/lib/datos.ts     carga con tiempo de espera de 3 s y validación
 src/lib/textos.ts    textos de estado
 src/lib/ics.ts       exportación a calendario
+src/lib/viajes.ts    racha, insignias, bus en camino y consejo de salida
 src/components/      piezas de interfaz
 src/pages/           Inicio, Horarios, Paradas, Avisos, Instalar, Notificaciones, Acerca de
 src/sw.ts            service worker: caché, datos, push

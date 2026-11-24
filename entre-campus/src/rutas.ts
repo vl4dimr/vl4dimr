@@ -7,6 +7,7 @@ export const PAGINAS = {
   paradas: "Paradas",
   avisos: "Avisos",
   mas: "Más",
+  viajes: "Mis viajes",
   instalar: "Instalar",
   notificaciones: "Notificaciones",
   acerca: "Acerca de",

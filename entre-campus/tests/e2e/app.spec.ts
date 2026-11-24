@@ -64,6 +64,42 @@ test.describe("pantalla principal", () => {
   });
 });
 
+test.describe("viajes, racha y consejo", () => {
+  test("muestra el bus en camino según el horario", async ({ page }) => {
+    await page.goto(en(MIERCOLES_NOCHE));
+    await expect(page.getByRole("heading", { name: "Bus en camino" })).toBeVisible();
+    await expect(page.getByRole("img", { name: "Recorrido estimado: 50 por ciento" })).toBeVisible();
+    await expect(page.getByText("El de las 6:00 p.m. llega a Benjamín Núñez en unos 10 min")).toBeVisible();
+  });
+
+  test("registra un viaje, suma a la racha y lo recuerda", async ({ page }) => {
+    await page.goto(en("2026-11-25T18:22:00-06:00"));
+    await expect(page.getByTestId("racha")).toHaveText("0");
+    await page.getByRole("button", { name: "Voy en el bus de las 6:30 p.m." }).click();
+    await expect(page.getByTestId("racha")).toHaveText("1");
+    await expect(page.getByText("¡Insignia nueva: Primer viaje!")).toBeVisible();
+    await expect(page.getByRole("button", { name: /Viaje de las 6:30 p.m. registrado/ })).toBeDisabled();
+    await page.goto(en("2026-11-26T09:00:00-06:00", "viajes"));
+    await expect(page.getByRole("heading", { name: "Insignias · 1 de 8" })).toBeVisible();
+    await expect(page.getByText("6:30 p.m. · ayer")).toBeVisible();
+  });
+
+  test("aconseja cuándo salir hacia la parada", async ({ page }) => {
+    await page.goto(en(MIERCOLES_NOCHE));
+    const mas = page.getByRole("button", { name: "Un minuto más" });
+    for (let i = 0; i < 8; i++) await mas.click();
+    await expect(page.getByTestId("consejo")).toHaveText(/^Salga hacia la parada en 11 min \d\d s$/);
+    await page.goto(en("2026-11-25T18:25:00-06:00"));
+    await expect(page.getByTestId("consejo")).toHaveText(/^El de las 6:30 p\.m\. ya no lo alcanza\. Para el de las 7:00 p\.m\.: salga hacia la parada en 26 min \d\d s$/);
+  });
+
+  test("avisa con urgencia cuando faltan menos de 2 minutos", async ({ page }) => {
+    await page.goto(en("2026-11-25T18:28:30-06:00"));
+    await expect(page.locator(".proxima.urgente")).toBeVisible();
+    await expect(page.getByTestId("cuenta")).toHaveText(/Sale en 1 min \d\d s/);
+  });
+});
+
 test.describe("errores de carga", () => {
   test("muestra el error y permite reintentar", async ({ page }) => {
     let fallar = true;
@@ -127,6 +163,15 @@ test.describe("navegación y contenido", () => {
     await expect(page.getByRole("radio", { name: /Benjamín Núñez hacia/ })).toBeChecked();
   });
 
+  test("la tarjeta urgente también pasa axe", async ({ page }) => {
+    await page.goto(en("2026-11-25T18:28:30-06:00"));
+    await page.getByRole("button", { name: "Un minuto más" }).click();
+    await expect(page.getByTestId("consejo")).toBeVisible();
+    await page.waitForTimeout(450);
+    const r = await new AxeBuilder({ page: page as never }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+    expect(r.violations.map((v) => `${v.id}: ${v.nodes.map((n) => n.target.join(" ")).join(" | ")}`)).toEqual([]);
+  });
+
   test("cambia de tema y lo recuerda", async ({ page }) => {
     await page.goto(en(MIERCOLES_NOCHE));
     await page.getByRole("button", { name: /^Tema: automático/ }).click();
@@ -138,7 +183,7 @@ test.describe("navegación y contenido", () => {
 });
 
 test.describe("accesibilidad (axe, WCAG 2.2 AA)", () => {
-  const paginas = ["", "horarios", "paradas", "avisos", "mas", "instalar", "notificaciones", "acerca"];
+  const paginas = ["", "horarios", "paradas", "avisos", "mas", "viajes", "instalar", "notificaciones", "acerca"];
   for (const tema of ["light", "dark"] as const) {
     for (const p of paginas) {
       test(`/${p} en tema ${tema}`, async ({ page }) => {
@@ -148,6 +193,7 @@ test.describe("accesibilidad (axe, WCAG 2.2 AA)", () => {
         await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
         if (p !== "mas" && p !== "instalar") await expect(page.locator(".cargando")).toHaveCount(0);
         if (p === "paradas") await expect(page.locator(".leaflet-marker-icon")).toHaveCount(2);
+        await page.waitForTimeout(450); // termina la animación de entrada
         const r = await new AxeBuilder({ page: page as never })
           .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa", "best-practice"])
           .analyze();

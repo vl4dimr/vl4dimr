@@ -7,6 +7,14 @@ export function Mas() {
       <Titulo>Más</Titulo>
       <ul class="enlaces">
         <li>
+          <a href={enlace("viajes")}>
+            <div>
+              Mis viajes<span>Su racha, insignias e historial</span>
+            </div>
+            <span aria-hidden="true">›</span>
+          </a>
+        </li>
+        <li>
           <a href={enlace("notificaciones")}>
             <div>
               Notificaciones<span>Avisos antes de cada salida o franja</span>

@@ -112,6 +112,7 @@ export function diaRelativo(hoy: FechaISO, fecha: FechaISO): string {
   const n = diasEntre(hoy, fecha);
   if (n === 0) return "hoy";
   if (n === 1) return "mañana";
+  if (n === -1) return "ayer";
   if (n > 1 && n < 7) return `el ${nombreDia(fecha)}`;
   return `el ${formatoFechaConDia(fecha)}`;
 }

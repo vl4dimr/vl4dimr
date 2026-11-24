@@ -10,6 +10,7 @@ import { Instalar } from "./pages/Instalar";
 import { Mas } from "./pages/Mas";
 import { Notificaciones } from "./pages/Notificaciones";
 import { Paradas } from "./pages/Paradas";
+import { Viajes } from "./pages/Viajes";
 import { enlace, PAGINAS, useLugar, type Pagina } from "./rutas";
 
 const VISTAS: Record<Pagina, () => preact.JSX.Element> = {
@@ -18,6 +19,7 @@ const VISTAS: Record<Pagina, () => preact.JSX.Element> = {
   paradas: Paradas,
   avisos: Avisos,
   mas: Mas,
+  viajes: Viajes,
   instalar: Instalar,
   notificaciones: Notificaciones,
   acerca: AcercaDe,
@@ -31,7 +33,7 @@ const ICONOS: Record<string, string> = {
   mas: "M5 12h.01M12 12h.01M19 12h.01",
 };
 const NAV: Pagina[] = ["", "horarios", "paradas", "avisos", "mas"];
-const EN_MAS: Pagina[] = ["mas", "instalar", "notificaciones", "acerca"];
+const EN_MAS: Pagina[] = ["mas", "viajes", "instalar", "notificaciones", "acerca"];
 
 const SIGUIENTE: Record<Tema, Tema> = { auto: "claro", claro: "oscuro", oscuro: "auto" };
 const NOMBRE_TEMA: Record<Tema, string> = { auto: "automático", claro: "claro", oscuro: "oscuro" };

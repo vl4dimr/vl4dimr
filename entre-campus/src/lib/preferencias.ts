@@ -31,3 +31,10 @@ export function aplicarTema(t: Tema): void {
   const oscuro = t === "oscuro" || (t === "auto" && matchMedia("(prefers-color-scheme: dark)").matches);
   document.querySelector('meta[name="theme-color"]')?.setAttribute("content", oscuro ? "#0f1517" : "#0b6e69");
 }
+
+/** Minutos que la persona tarda en llegar a la parada (0 = sin consejo). */
+export function leerCaminata(): number {
+  const n = Number(leer("ec:caminata"));
+  return Number.isFinite(n) && n >= 0 && n <= 60 ? n : 0;
+}
+export const guardarCaminata = (min: number): void => guardar("ec:caminata", String(min));
