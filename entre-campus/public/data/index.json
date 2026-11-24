@@ -1,0 +1,7 @@
+{
+  "activo": "III-2026",
+  "ciclos": [
+    { "ciclo": "III-2026", "archivo": "III-2026.json", "inicio": "2026-11-16", "fin": "2027-02-05" },
+    { "ciclo": "I-2027", "archivo": "I-2027.json", "inicio": "2027-02-15", "fin": "2027-06-25" }
+  ]
+}

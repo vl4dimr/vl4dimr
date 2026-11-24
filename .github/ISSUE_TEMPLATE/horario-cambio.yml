@@ -1,0 +1,35 @@
+name: Horario cambió
+description: El horario del bus que muestra Entre Campus ya no coincide con el real.
+title: "[Horario] "
+labels: ["entre-campus", "horario"]
+body:
+  - type: dropdown
+    id: ruta
+    attributes:
+      label: Ruta
+      options:
+        - Omar Dengo → Benjamín Núñez
+        - Benjamín Núñez → Omar Dengo
+        - Ambas
+    validations:
+      required: true
+  - type: textarea
+    id: cambio
+    attributes:
+      label: ¿Qué cambió?
+      description: Franja, horas de salida, frecuencia, feriado o vigencia del ciclo.
+      placeholder: "La franja de Noche ahora termina a las 9:00 p.m."
+    validations:
+      required: true
+  - type: input
+    id: desde
+    attributes:
+      label: ¿Desde cuándo rige?
+      placeholder: "2027-03-01"
+  - type: textarea
+    id: fuente
+    attributes:
+      label: Fuente
+      description: Enlace al comunicado oficial o foto del aviso. Sin fuente no podemos publicar el cambio.
+    validations:
+      required: true
