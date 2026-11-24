@@ -1,0 +1,35 @@
+name: Parada incorrecta
+description: Una parada está mal ubicada, mal nombrada o falta en el mapa de Entre Campus.
+title: "[Parada] "
+labels: ["entre-campus", "paradas"]
+body:
+  - type: input
+    id: parada
+    attributes:
+      label: Parada
+      placeholder: "Campus Benjamín Núñez"
+    validations:
+      required: true
+  - type: textarea
+    id: problema
+    attributes:
+      label: ¿Qué está mal?
+    validations:
+      required: true
+  - type: input
+    id: ubicacion
+    attributes:
+      label: Ubicación correcta
+      description: Coordenadas (lat, lng) o un enlace de OpenStreetMap.
+      placeholder: "9.9716, -84.1289"
+  - type: textarea
+    id: referencia
+    attributes:
+      label: Referencia y foto
+      description: Cómo reconocer la parada. Puede arrastrar una foto aquí.
+  - type: checkboxes
+    id: verificada
+    attributes:
+      label: Verificación
+      options:
+        - label: Estuve en el sitio y confirmé la ubicación.

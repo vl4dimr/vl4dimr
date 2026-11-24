@@ -1,0 +1,111 @@
+{
+  "ciclo": "III-2026",
+  "ejemplo": true,
+  "vigencia": {
+    "inicio": "2026-11-16",
+    "fin": "2027-02-05"
+  },
+  "fuente": "DATOS DE EJEMPLO: pendiente de confirmar con la fuente oficial de la UNA",
+  "actualizado": "2026-11-24",
+  "rutas": [
+    {
+      "id": "od-bn",
+      "origen": "Campus Omar Dengo",
+      "destino": "Campus Benjamín Núñez",
+      "duracionEstimadaMin": 20,
+      "franjas": {
+        "lunes-viernes": [
+          {
+            "nombre": "Mañana",
+            "inicio": "06:00",
+            "fin": "08:00",
+            "frecuenciaMin": 30
+          },
+          {
+            "nombre": "Mediodía",
+            "inicio": "12:00",
+            "fin": "14:00",
+            "frecuenciaMin": 30
+          },
+          {
+            "nombre": "Noche",
+            "inicio": "17:00",
+            "fin": "20:00",
+            "frecuenciaMin": 30
+          }
+        ]
+      },
+      "salidasExactas": null
+    },
+    {
+      "id": "bn-od",
+      "origen": "Campus Benjamín Núñez",
+      "destino": "Campus Omar Dengo",
+      "duracionEstimadaMin": 20,
+      "franjas": {
+        "lunes-viernes": [
+          {
+            "nombre": "Mañana",
+            "inicio": "06:00",
+            "fin": "08:00",
+            "frecuenciaMin": 30
+          },
+          {
+            "nombre": "Mediodía",
+            "inicio": "12:00",
+            "fin": "14:00",
+            "frecuenciaMin": 30
+          },
+          {
+            "nombre": "Noche",
+            "inicio": "17:00",
+            "fin": "20:00",
+            "frecuenciaMin": 30
+          }
+        ]
+      },
+      "salidasExactas": null
+    }
+  ],
+  "excepciones": [
+    {
+      "fecha": "2026-12-25",
+      "tipo": "sin_servicio",
+      "motivo": "Navidad"
+    },
+    {
+      "fecha": "2027-01-01",
+      "tipo": "sin_servicio",
+      "motivo": "Año Nuevo"
+    }
+  ],
+  "paradas": [
+    {
+      "id": "p-od",
+      "nombre": "Campus Omar Dengo (ubicación de ejemplo)",
+      "lat": 9.9987,
+      "lng": -84.1112,
+      "verificada": false,
+      "foto": null,
+      "referencia": "Punto aproximado dentro del campus, en Heredia centro. La parada exacta está pendiente de verificar."
+    },
+    {
+      "id": "p-bn",
+      "nombre": "Campus Benjamín Núñez (ubicación de ejemplo)",
+      "lat": 9.9716,
+      "lng": -84.1289,
+      "verificada": false,
+      "foto": null,
+      "referencia": "Punto aproximado dentro del campus, en Lagunilla. La parada exacta está pendiente de verificar."
+    }
+  ],
+  "avisos": [
+    {
+      "id": "a-ejemplo",
+      "nivel": "advertencia",
+      "texto": "Los horarios y las paradas que ve son datos de ejemplo. Confirme con la fuente oficial antes de planear su viaje.",
+      "desde": "2026-11-01",
+      "hasta": "2027-02-05"
+    }
+  ]
+}

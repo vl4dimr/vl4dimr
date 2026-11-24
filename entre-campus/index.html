@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="es-CR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Entre Campus · Bus interno UNA</title>
+    <meta name="description" content="Horario, próxima salida y paradas del bus interno entre el Campus Omar Dengo y el Campus Benjamín Núñez de la UNA. Proyecto independiente, no oficial." />
+    <meta name="theme-color" content="#0b6e69" />
+    <link rel="icon" href="icons/icono.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+    <script>
+      try {
+        var t = localStorage.getItem("ec:tema");
+        if (t === "claro" || t === "oscuro") document.documentElement.setAttribute("data-tema", t);
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <a class="saltar" href="#contenido">Ir al contenido</a>
+    <div id="app"></div>
+    <noscript>Entre Campus necesita JavaScript para mostrar el horario.</noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

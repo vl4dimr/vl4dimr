@@ -1,0 +1,72 @@
+name: Entre Campus · Desplegar
+
+on:
+  push:
+    branches: [main]
+    paths: ["entre-campus/**", ".github/workflows/entre-campus-desplegar.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: entre-campus-desplegar
+  cancel-in-progress: false
+
+defaults:
+  run:
+    working-directory: entre-campus
+
+jobs:
+  compilar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: entre-campus/package-lock.json
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+        env:
+          # Variables del repositorio (Settings → Secrets and variables → Actions → Variables).
+          VITE_PUSH_API: ${{ vars.VITE_PUSH_API }}
+          VITE_VAPID_PUBLICA: ${{ vars.VITE_VAPID_PUBLICA }}
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: entre-campus/dist
+
+  sitio:
+    needs: compilar
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.pages.outputs.page_url }}
+    steps:
+      - id: pages
+        uses: actions/deploy-pages@v4
+
+  worker:
+    # Se activa definiendo la variable DESPLEGAR_WORKER=true y el secreto CLOUDFLARE_API_TOKEN.
+    if: vars.DESPLEGAR_WORKER == 'true'
+    needs: compilar
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: entre-campus/package-lock.json
+      - run: npm ci
+      - run: npm run worker:deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

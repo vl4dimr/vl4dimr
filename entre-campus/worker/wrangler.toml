@@ -1,0 +1,25 @@
+name = "entre-campus-avisos"
+main = "src/index.ts"
+compatibility_date = "2026-11-01"
+
+# Cada minuto: revisa si alguna salida o franja ocurre dentro de 10 o 5 minutos.
+[triggers]
+crons = ["* * * * *"]
+
+[[kv_namespaces]]
+binding = "SUSCRIPCIONES"
+# Cree el espacio con:  npx wrangler kv namespace create SUSCRIPCIONES
+# y pegue aquí el id que devuelve.
+id = "REEMPLAZAR_CON_EL_ID_DEL_KV"
+
+[vars]
+# Carpeta pública de datos del sitio (termina en /data/).
+DATOS_URL = "https://REEMPLAZAR.pages.dev/data/"
+# Origen del sitio, para CORS. Varios orígenes separados por coma.
+ORIGENES = "https://REEMPLAZAR.pages.dev"
+# Contacto que exige VAPID (mailto: o https:).
+VAPID_CONTACTO = "mailto:REEMPLAZAR@example.com"
+
+# Secretos (NUNCA en el repositorio):
+#   npx wrangler secret put VAPID_PUBLICA  --config worker/wrangler.toml
+#   npx wrangler secret put VAPID_PRIVADA  --config worker/wrangler.toml

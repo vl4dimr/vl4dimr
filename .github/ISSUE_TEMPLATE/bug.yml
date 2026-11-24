@@ -1,0 +1,35 @@
+name: Bug
+description: Algo en Entre Campus no funciona como debería.
+title: "[Bug] "
+labels: ["entre-campus", "bug"]
+body:
+  - type: textarea
+    id: pasos
+    attributes:
+      label: ¿Qué hizo y qué pasó?
+      description: Pasos para repetir el problema.
+    validations:
+      required: true
+  - type: textarea
+    id: esperado
+    attributes:
+      label: ¿Qué esperaba que pasara?
+    validations:
+      required: true
+  - type: input
+    id: dispositivo
+    attributes:
+      label: Dispositivo y navegador
+      placeholder: "iPhone 13, iOS 17.5, Safari (app instalada)"
+    validations:
+      required: true
+  - type: input
+    id: hora
+    attributes:
+      label: Fecha y hora del problema
+      description: Ayuda mucho con los errores de horario.
+      placeholder: "2027-03-05, 8:01 p.m."
+  - type: textarea
+    id: capturas
+    attributes:
+      label: Capturas de pantalla
